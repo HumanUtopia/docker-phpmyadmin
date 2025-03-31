@@ -1,4 +1,4 @@
-name: Build phpMyAdmin
+name: Deploy phpMyAdmin
 
 on:
   workflow_dispatch:
@@ -34,10 +34,12 @@ jobs:
         LATEST_VERSION=$(curl -s https://api.github.com/repos/phpmyadmin/phpmyadmin/releases/latest | jq -r .tag_name)
         echo "latest_version=$LATEST_VERSION" >> $GITHUB_ENV
 
-    - name: Set phpMyAdmin version
+    - name: Set phpMyAdmin version (manual)
       if: github.event_name == 'workflow_dispatch'
       run: echo "version=${{ github.event.inputs.version }}" >> $GITHUB_ENV
-      else:
+
+    - name: Set phpMyAdmin version (scheduled)
+      if: github.event_name == 'schedule'
       run: echo "version=${{ env.latest_version }}" >> $GITHUB_ENV
 
     - name: Log in to GitHub Container Registry
