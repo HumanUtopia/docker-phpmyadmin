@@ -60,7 +60,7 @@ jobs:
         docker buildx build --platform linux/amd64,linux/arm64 \
           --tag ghcr.io/$OWNER_NAME/phpmyadmin:$READABLE_VERSION \
           --tag ghcr.io/$OWNER_NAME/phpmyadmin:latest \
-          --build-arg VERSION=$VERSION \
+          --build-arg VERSION=$READABLE_VERSION \
           --push .
 
     - name: Push Docker image
