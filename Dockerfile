@@ -20,6 +20,7 @@ RUN apk update && apk add --no-cache \
 # Download and setup phpMyAdmin
 ARG VERSION
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/${VERSION}/phpMyAdmin-${VERSION}-english.tar.gz \
+    && mkdir -p /var/www \
     && tar -xzf phpMyAdmin-${VERSION}-english.tar.gz -C /var/www \
     && mv /var/www/phpMyAdmin-${VERSION}-english /var/www/phpmyadmin \
     && rm phpMyAdmin-${VERSION}-english.tar.gz
