@@ -52,13 +52,14 @@ jobs:
     - name: Build and push Docker image
       run: |
         VERSION=${{ env.version }}
+        OWNER_NAME=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
         docker buildx build --platform linux/amd64,linux/arm64 \
-          --tag ghcr.io/${{ github.repository_owner }}/phpmyadmin:$VERSION \
-          --tag ghcr.io/${{ github.repository_owner }}/phpmyadmin:latest \
+          --tag ghcr.io/$OWNER_NAME/phpmyadmin:$VERSION \
+          --tag ghcr.io/$OWNER_NAME/phpmyadmin:latest \
           --build-arg VERSION=$VERSION \
           --push .
 
     - name: Push Docker image
       run: |
-        docker push ghcr.io/${{ github.repository_owner }}/phpmyadmin:$VERSION
-        docker push ghcr.io/${{ github.repository_owner }}/phpmyadmin:latest
+        docker push ghcr.io/$OWNER_NAME/phpmyadmin:$VERSION
+        docker push ghcr.io/$OWNER_NAME/phpmyadmin:latest
