@@ -1,0 +1,5 @@
+:80 {
+    root * /var/www/phpmyadmin
+    php_fastcgi unix:/run/php/php-fpm.sock
+    file_server
+}
