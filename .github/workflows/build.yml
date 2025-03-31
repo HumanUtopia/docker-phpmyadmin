@@ -64,5 +64,6 @@ jobs:
 
     - name: Push Docker image
       run: |
+        OWNER_NAME=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
         docker push ghcr.io/$OWNER_NAME/phpmyadmin:$VERSION
         docker push ghcr.io/$OWNER_NAME/phpmyadmin:latest
