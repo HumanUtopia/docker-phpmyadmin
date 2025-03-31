@@ -5,16 +5,16 @@ FROM alpine:latest
 
 # Install dependencies
 RUN apk update && apk add --no-cache \
-    php7 \
-    php7-fpm \
-    php7-json \
-    php7-zlib \
-    php7-xml \
-    php7-phar \
-    php7-intl \
-    php7-mysqli \
-    php7-mbstring \
-    php7-session \
+    php8 \
+    php8-fpm \
+    php8-json \
+    php8-zlib \
+    php8-xml \
+    php8-phar \
+    php8-intl \
+    php8-mysqli \
+    php8-mbstring \
+    php8-session \
     caddy
 
 # Download and setup phpMyAdmin
