@@ -8,6 +8,9 @@ on:
         required: true
   schedule:
     - cron: '0 0 * * *' # Runs at midnight every day
+    
+permissions:
+  packages: write
 
 jobs:
   deploy:
